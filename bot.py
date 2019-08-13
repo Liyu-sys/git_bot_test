@@ -5,8 +5,6 @@ from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineQueryResultArticle, InputTextMessageContent
 from pprint import pprint
 
-from function import record
-
 import pymysql
 
 bot = telepot.Bot('Your token')

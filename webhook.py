@@ -29,7 +29,7 @@ class PayloadView(object):
         print('New commit to ' +self.payload['compare']+'\n'+
           self.payload['after'][0:7]+': '+self.payload['commits'][0]['message']+
           ' by '+self.payload['commits'][0]['author']['username']+'\n')
-        bot.sendMessage(903943220,'New commit to ' +self.payload['compare']+'\n'+
+        bot.sendMessage(,'New commit to ' +self.payload['compare']+'\n'+
           self.payload['after'][0:7]+': '+self.payload['commits'][0]['message']+
           ' by '+self.payload['commits'][0]['author']['username']+'\n')
         conn = pymysql.connect()
@@ -52,7 +52,7 @@ class PayloadView(object):
         print('New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
+        bot.sendMessage(,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
         conn = pymysql.connect()
@@ -75,7 +75,7 @@ class PayloadView(object):
         print('New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
+        bot.sendMessage(,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
         conn = pymysql.connect()
@@ -98,7 +98,7 @@ class PayloadView(object):
         print('New review on '+self.payload['review']['html_url']
           +' by '+self.payload['review']['user']['login']+'\n'+
           self.payload['review']['body']+'\n')
-        bot.sendMessage(903943220,'New review on '+self.payload['review']['html_url']
+        bot.sendMessage(,'New review on '+self.payload['review']['html_url']
           +' by '+self.payload['review']['user']['login']+'\n'+
           self.payload['review']['body']+'\n')
         conn = pymysql.connect()
@@ -121,7 +121,7 @@ class PayloadView(object):
         print('New pull request '+self.payload['pull_request']['html_url']+'\n'
           +'by: '+self.payload['pull_request']['user']['login']+'\n'+
           self.payload['pull_request']['body']+'\n')
-        bot.sendMessage(903943220,'New pull request '+self.payload['pull_request']['html_url']+'\n'
+        bot.sendMessage(,'New pull request '+self.payload['pull_request']['html_url']+'\n'
           +'by: '+self.payload['pull_request']['user']['login']+'\n'+
           self.payload['pull_request']['body']+'\n')
         conn = pymysql.connect()
@@ -144,7 +144,7 @@ class PayloadView(object):
         print('New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
+        bot.sendMessage(,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
         conn = pymysql.connect()
@@ -167,7 +167,7 @@ class PayloadView(object):
         print('New issue '+self.payload['issue']['html_url']+
             ' by '+str(self.payload['issue']['user']['login'])+'\n'
             +self.payload['issue']['body']+'\n')
-        bot.sendMessage(903943220,'New issue '+self.payload['issue']['html_url']+
+        bot.sendMessage(,'New issue '+self.payload['issue']['html_url']+
             ' by '+str(self.payload['issue']['user']['login'])+'\n'
             +self.payload['issue']['body']+'\n')
         conn = pymysql.connect()

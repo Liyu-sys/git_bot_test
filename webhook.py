@@ -12,7 +12,7 @@ import pymysql
 
 import datetime
 
-bot = telepot.Bot('847753944:AAGpkkz-Jq00Ci7ZVlr-3GpB0g5i5Fznwj4')
+bot = telepot.Bot('Your token')
 telepot.api.set_proxy('http://127.0.0.1:1087')
 ENDPOINT = "webhook"
 
@@ -32,7 +32,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New commit to ' +self.payload['compare']+'\n'+
           self.payload['after'][0:7]+': '+self.payload['commits'][0]['message']+
           ' by '+self.payload['commits'][0]['author']['username']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('commit','{}','{}','{}','{}')""".format(self.payload['compare'],
@@ -55,7 +55,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('commit_comment','{}','{}','{}','{}')""".format(self.payload['comment']['html_url'],
@@ -78,7 +78,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('commit_comment','{}','{}','{}','{}')""".format(sself.payload['comment']['html_url'],
@@ -101,7 +101,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New review on '+self.payload['review']['html_url']
           +' by '+self.payload['review']['user']['login']+'\n'+
           self.payload['review']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('pull_request_review','{}','{}','{}','{}')""".format(self.payload['review']['html_url'],
@@ -124,7 +124,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New pull request '+self.payload['pull_request']['html_url']+'\n'
           +'by: '+self.payload['pull_request']['user']['login']+'\n'+
           self.payload['pull_request']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('pull_request','{}','{}','{}','{}')""".format(self.payload['pull_request']['html_url'],
@@ -147,7 +147,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New comment on '+self.payload['comment']['html_url']+
         ' by '+self.payload['comment']['user']['login']+'\n'+
         self.payload['comment']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('issue_comment','{}','{}','{}','{}')""".format(self.payload['comment']['html_url'],
@@ -170,7 +170,7 @@ class PayloadView(object):
         bot.sendMessage(903943220,'New issue '+self.payload['issue']['html_url']+
             ' by '+str(self.payload['issue']['user']['login'])+'\n'
             +self.payload['issue']['body']+'\n')
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into events_information
             values('issues','{}','{}','{}','{}')""".format(self.payload['issue']['html_url'],
@@ -193,13 +193,13 @@ class PayloadView(object):
 
 
 def create_webhook():
-    USERNAME = "Liyu-sys"
-    PASSWORD = "nepnyg-pIdbuh-9rucki"
-    OWNER = "Liyu-sys"
-    REPO_NAME = "test"
+    USERNAME = ""
+    PASSWORD = ""
+    OWNER = ""
+    REPO_NAME = ""
     EVENTS = ["push", "pull_request","issues","issue_comment","commit_comment",
               "pull_request_review_comment","pull_request_review"]
-    HOST = "ccc4edd9.ngrok.io"
+    HOST = ""
     config = {
         "url": "http://{host}/{endpoint}".format(host=HOST, endpoint=ENDPOINT),
         "content_type": "json"

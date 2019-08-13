@@ -212,7 +212,7 @@ def create_webhook():
 
 if __name__ == "__main__":
     config = Configurator()
-
+    create_webhook()
     config.add_route(ENDPOINT, "/{}".format(ENDPOINT))
     config.scan()
     app = config.make_wsgi_app()

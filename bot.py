@@ -9,7 +9,7 @@ from function import record
 
 import pymysql
 
-bot = telepot.Bot('847753944:AAGpkkz-Jq00Ci7ZVlr-3GpB0g5i5Fznwj4')
+bot = telepot.Bot('Your token')
 telepot.api.set_proxy('http://127.0.0.1:1087')
 
 user = {}
@@ -19,7 +19,7 @@ def on_inline_query(msg):
         context = ''
         query_id, from_id, query_string = telepot.glance(msg, flavor='inline_query')
         print ('Inline Query:', query_id, from_id, query_string)
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = "select * from events_information where date = '{}'".format(query_string)
         cursor.execute(sql)
@@ -45,7 +45,7 @@ def on_chosen_inline_result(msg):
     pprint(response)
     record(from_id,user)
     print(user)
-    conn = pymysql.connect('localhost','root','123','new_events')
+    conn = pymysql.connect()
     cursor = conn.cursor()
     sql = "select * from user_info where user_id"
     cursor.execute(sql)
@@ -57,7 +57,7 @@ def on_chosen_inline_result(msg):
             indicator = False
     conn.close()
     if indicator:
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """insert into user_info
         values({},1,{},'{}')""".format(from_id,response[0]['message']['chat']['id'],result_id)
@@ -65,7 +65,7 @@ def on_chosen_inline_result(msg):
         conn.commit()
         conn.close()
     else:
-        conn = pymysql.connect('localhost','root','123','new_events')
+        conn = pymysql.connect()
         cursor = conn.cursor()
         sql = """update user_info set forward_times = forward_times + 1,
         last_group_id = {},last_info_id = '{}' where user_id = {} """.format(response[0]
